@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 	  super.onPause();
 
 	  // Logs 'app deactivate' App Event.
-	  //AppEventsLogger.deactivateApp(this);
+	  AppEventsLogger.deactivateApp(this);
 	}
 
 }
