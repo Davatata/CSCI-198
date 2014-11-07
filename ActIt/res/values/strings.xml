@@ -41,5 +41,6 @@
     <string name="nice_try">Nice Try</string>
     <string name="log_in">Log In</string>
     <string name="facebook_app_id">608868299241580</string>
+    <string name="MainActivity">MainActivity</string>
 
 </resources>

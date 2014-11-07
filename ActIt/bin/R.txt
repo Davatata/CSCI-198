@@ -227,6 +227,7 @@ int menu new_game 0x7f080004
 int menu play_game 0x7f080005
 int menu tap_to_act 0x7f080006
 int menu tap_to_guess 0x7f080007
+int string MainActivity 0x7f060044
 int string act_it_description 0x7f06001f
 int string act_one 0x7f060031
 int string action_settings 0x7f06001d
