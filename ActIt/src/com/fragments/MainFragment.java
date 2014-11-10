@@ -3,6 +3,7 @@ package com.fragments;
 
 import java.util.Arrays;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,9 +34,12 @@ public class MainFragment extends Fragment {
     }
 
     private void onSessionStateChange(Session session, SessionState state, Exception exception) {
+    	ActionBar actionBar = getActivity().getActionBar();
         if (state.isOpened()) {
             Log.w(TAG, "Logged in...");
+            actionBar.show();
         } else if (state.isClosed()) {
+        	actionBar.hide();
             Log.w(TAG, "Logged out...");
         }
     }
