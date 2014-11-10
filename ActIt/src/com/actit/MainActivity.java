@@ -9,8 +9,12 @@ import android.view.Menu;
 import android.widget.TextView;
 
 import com.facebook.AppEventsLogger;
+import com.facebook.Session;
+
 import android.support.v4.app.Fragment;
+
 import com.fragments.MainFragment;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -36,6 +40,8 @@ public class MainActivity extends FragmentActivity  {
 	    }
 	}
 
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -50,6 +56,12 @@ public class MainActivity extends FragmentActivity  {
 	  // Logs 'install' and 'app activate' App Events.
 	  String appId = getResources().getString(R.string.facebook_app_id);
 	  AppEventsLogger.activateApp(getApplicationContext(), appId);
+	  /*
+	  Session session = Session.getActiveSession();
+  	  if (session != null && session.isOpened()){
+  		  Intent intent = new Intent(this, Main.class);
+  		  startActivity(intent);
+  	  }*/
 	}
 	
 	@Override
