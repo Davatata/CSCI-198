@@ -10,18 +10,20 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LoginButton;
+import com.actit.Main;
 import com.actit.R;
 
 public class MainFragment extends Fragment {
     private static final String TAG = "MainFragment";
     private UiLifecycleHelper uiHelper;
-
+    private boolean loggedIn = false;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main, container, false);
@@ -29,7 +31,7 @@ public class MainFragment extends Fragment {
         LoginButton authButton = (LoginButton) view.findViewById(R.id.authButton);
         authButton.setFragment(this);
         authButton.setReadPermissions(Arrays.asList("user_friends", "public_profile", "email"));
-
+        
         return view;
     }
 
@@ -39,8 +41,8 @@ public class MainFragment extends Fragment {
             Log.w(TAG, "Logged in...");
             actionBar.show();
         } else if (state.isClosed()) {
+        	Log.w(TAG, "Logged out...");
         	actionBar.hide();
-            Log.w(TAG, "Logged out...");
         }
     }
 
@@ -51,6 +53,15 @@ public class MainFragment extends Fragment {
         }
     };
 
+    private void checkLogged(){
+    	if(loggedIn == false){
+        	Intent intent = new Intent(getActivity(), Main.class);
+    		startActivity(intent);
+    		loggedIn = true;
+        }
+    }
+    
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

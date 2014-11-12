@@ -46,10 +46,9 @@ public class MainActivity extends FragmentActivity  {
 	
 	private void openSettings() {
 		//  Auto-generated method stub
-		Intent intent = new Intent(this, Main.class);
-		startActivity(intent);
+		//  Just stay on page
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
