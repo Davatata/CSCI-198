@@ -12,18 +12,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LoginButton;
 import com.actit.Main;
+import com.actit.MainActivity;
 import com.actit.R;
 
 public class MainFragment extends Fragment {
     private static final String TAG = "MainFragment";
     private UiLifecycleHelper uiHelper;
     private boolean loggedIn = false;
+    private Button button_continue;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main, container, false);
@@ -32,6 +36,17 @@ public class MainFragment extends Fragment {
         authButton.setFragment(this);
         authButton.setReadPermissions(Arrays.asList("user_friends", "public_profile", "email"));
         
+        button_continue = (Button) view.findViewById(R.id.button1);
+        button_continue.setVisibility(View.INVISIBLE);
+        button_continue.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view){
+				//Toast.makeText(getActivity(), "Continue", Toast.LENGTH_SHORT).show(); //dark writing on bottom of screen when clicked
+				Intent intent = new Intent(getActivity(), Main.class);
+		  		startActivity(intent);
+			}
+		});
+        
         return view;
     }
 
@@ -39,9 +54,11 @@ public class MainFragment extends Fragment {
     	ActionBar actionBar = getActivity().getActionBar();
         if (state.isOpened()) {
             Log.w(TAG, "Logged in...");
+            button_continue.setVisibility(View.VISIBLE);
             actionBar.show();
         } else if (state.isClosed()) {
         	Log.w(TAG, "Logged out...");
+        	button_continue.setVisibility(View.INVISIBLE);
         	actionBar.hide();
         }
     }

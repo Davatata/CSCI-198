@@ -42,5 +42,6 @@
     <string name="log_in">Log In</string>
     <string name="facebook_app_id">608868299241580</string>
     <string name="MainActivity">MainActivity</string>
+    <string name="continue1">Continue</string>
 
 </resources>
