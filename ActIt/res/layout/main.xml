@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +7,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Main" >
-
+	<LinearLayout 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical">
+    
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
@@ -32,16 +36,44 @@
         android:layout_marginTop="63dp" >
 
         <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:ems="10"
+                android:background="@drawable/round_corners"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center_vertical|center"
+                android:longClickable="false"
+                android:text="@string/your_move" />
+
+        </TableRow>
+
+        <TableRow
             android:id="@+id/tableRow1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:longClickable="false" >
 
             <EditText
                 android:id="@+id/editText1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="false"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
                 android:text="@string/example_name" >
 
                 <requestFocus />
@@ -55,46 +87,6 @@
         </TableRow>
     </TableLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_centerHorizontal="true" >
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:layout_weight="1"
-            android:clickable="false"
-            android:ems="10"
-            android:gravity="center_vertical|center"
-            android:longClickable="false"
-            android:text="@string/your_move" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tableLayout1"
-        android:layout_below="@+id/tableLayout1"
-        android:layout_marginTop="29dp" >
-
-        <EditText
-            android:id="@+id/EditText01"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:layout_weight="1"
-            android:clickable="false"
-            android:ems="10"
-            android:gravity="center_vertical|center"
-            android:longClickable="false"
-            android:text="@string/their_move" />
-    </LinearLayout>
-
     <TableLayout
         android:id="@+id/TableLayout01"
         android:layout_width="match_parent"
@@ -102,6 +94,28 @@
         android:layout_alignLeft="@+id/linearLayout2"
         android:layout_below="@+id/linearLayout2"
         android:layout_marginTop="20dp" >
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/EditText01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:ems="10"
+                android:background="@drawable/round_corners"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center_vertical|center"
+                android:longClickable="false"
+                android:text="@string/their_move" />
+
+        </TableRow>
 
         <TableRow
             android:id="@+id/TableRow01"
@@ -113,7 +127,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:clickable="false"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:longClickable="false"
                 android:text="@string/example_name" />
 
             <Button
@@ -122,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/play" />
         </TableRow>
-    </TableLayout>
 
-</RelativeLayout>
+    </TableLayout>
+    </LinearLayout>
+</ScrollView>

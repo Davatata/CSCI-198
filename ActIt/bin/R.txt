@@ -89,7 +89,7 @@ int drawable com_facebook_list_divider 0x7f020016
 int drawable com_facebook_list_section_header_background 0x7f020017
 int drawable com_facebook_loginbutton_silver 0x7f020018
 int drawable com_facebook_logo 0x7f020019
-int drawable com_facebook_picker_default_separator_color 0x7f020037
+int drawable com_facebook_picker_default_separator_color 0x7f020038
 int drawable com_facebook_picker_item_background 0x7f02001a
 int drawable com_facebook_picker_list_focused 0x7f02001b
 int drawable com_facebook_picker_list_longpressed 0x7f02001c
@@ -117,9 +117,10 @@ int drawable com_facebook_usersettingsfragment_background_gradient 0x7f020031
 int drawable ic_action_settings 0x7f020032
 int drawable ic_launcher 0x7f020033
 int drawable one_coin 0x7f020034
-int drawable three_coins 0x7f020035
-int drawable two_coins 0x7f020036
-int id Button01 0x7f09004c
+int drawable round_corners 0x7f020035
+int drawable three_coins 0x7f020036
+int drawable two_coins 0x7f020037
+int id Button01 0x7f09004e
 int id EditText01 0x7f09001a
 int id EditText02 0x7f090012
 int id EditText03 0x7f090022
@@ -139,7 +140,7 @@ int id LinearLayout05 0x7f09002a
 int id TableLayout01 0x7f090017
 int id TableRow01 0x7f090018
 int id TableRow02 0x7f090010
-int id action_settings 0x7f09004d
+int id action_settings 0x7f09004f
 int id authButton 0x7f09001d
 int id bottom 0x7f090006
 int id box_count 0x7f090003
@@ -194,6 +195,8 @@ int id standard 0x7f090005
 int id surfaceView1 0x7f09002f
 int id tableLayout1 0x7f09000f
 int id tableRow1 0x7f090013
+int id tableRow2 0x7f09004c
+int id tableRow3 0x7f09004d
 int id top 0x7f090008
 int id videoView1 0x7f090031
 int id welcome 0x7f09001b

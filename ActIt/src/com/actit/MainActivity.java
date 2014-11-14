@@ -45,8 +45,7 @@ public class MainActivity extends FragmentActivity  {
 	        .findFragmentById(android.R.id.content);
 	    }
 	}
-	
-	
+		
 	private void openSettings() {
 		//  Auto-generated method stub
 		//  Just stay on page
