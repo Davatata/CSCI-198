@@ -21,7 +21,7 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/create_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/create_game" />
@@ -46,12 +46,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="34dp"
                 android:layout_weight="1"
+                android:background="@drawable/round_corners"
                 android:clickable="false"
                 android:ems="10"
-                android:background="@drawable/round_corners"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:gravity="center_vertical|center"
+                android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/your_move" />
 
@@ -73,6 +74,7 @@
                 android:ems="10"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/example_name" >
 
@@ -106,12 +108,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="34dp"
                 android:layout_weight="1"
+                android:background="@drawable/round_corners"
                 android:clickable="false"
                 android:ems="10"
-                android:background="@drawable/round_corners"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:gravity="center_vertical|center"
+                android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/their_move" />
 
@@ -131,6 +134,7 @@
                 android:ems="10"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/example_name" />
 

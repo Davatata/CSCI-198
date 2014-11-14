@@ -5,13 +5,25 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class Main extends Activity {
-
+	private Button button_new_game;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		button_new_game = (Button) findViewById(R.id.create_game);
+		button_new_game.setOnClickListener(new OnClickListener() {
+			public void onClick(View view){
+				Intent intent = new Intent(Main.this, New_game.class);
+		  		startActivity(intent);
+			}
+		});
+		
 	}
 
 	@Override

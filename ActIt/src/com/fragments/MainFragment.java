@@ -4,29 +4,27 @@ package com.fragments;
 import java.util.Arrays;
 
 import android.app.ActionBar;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LoginButton;
 import com.actit.Main;
-import com.actit.MainActivity;
 import com.actit.R;
 
 public class MainFragment extends Fragment {
     private static final String TAG = "MainFragment";
     private UiLifecycleHelper uiHelper;
-    private boolean loggedIn = false;
     private Button button_continue;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,7 +34,7 @@ public class MainFragment extends Fragment {
         authButton.setFragment(this);
         authButton.setReadPermissions(Arrays.asList("user_friends", "public_profile", "email"));
         
-        button_continue = (Button) view.findViewById(R.id.button1);
+        button_continue = (Button) view.findViewById(R.id.create_game);
         button_continue.setVisibility(View.INVISIBLE);
         button_continue.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -56,9 +54,17 @@ public class MainFragment extends Fragment {
             Log.w(TAG, "Logged in...");
             button_continue.setVisibility(View.VISIBLE);
             actionBar.show();
+            
         } else if (state.isClosed()) {
         	Log.w(TAG, "Logged out...");
         	button_continue.setVisibility(View.INVISIBLE);
+        	/*
+        	android.support.v4.app.FragmentManager fm = getActivity().getSupportFragmentManager();
+        	for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {    
+        	    fm.popBackStack();
+        	    System.out.println("clear stack");
+        	}*/
+        	
         	actionBar.hide();
         }
     }
@@ -69,14 +75,6 @@ public class MainFragment extends Fragment {
             onSessionStateChange(session, state, exception);
         }
     };
-
-    private void checkLogged(){
-    	if(loggedIn == false){
-        	Intent intent = new Intent(getActivity(), Main.class);
-    		startActivity(intent);
-    		loggedIn = true;
-        }
-    }
     
     
     @Override

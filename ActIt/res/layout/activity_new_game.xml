@@ -21,8 +21,14 @@
             android:id="@+id/editText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:ems="10"
+            android:background="@drawable/round_corners"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="center_vertical|center_horizontal"
+            android:inputType="none"
+            android:longClickable="false"
             android:text="@string/new_game" >
 
             <requestFocus />
@@ -35,12 +41,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_alignStart="@+id/linearLayout1"
         android:layout_below="@+id/linearLayout1"
         android:layout_marginTop="25dp"
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/create_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/facebook_friends" />
@@ -51,6 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_alignStart="@+id/linearLayout2"
         android:layout_below="@+id/linearLayout2"
         android:layout_marginTop="15dp"
         android:orientation="vertical" >
