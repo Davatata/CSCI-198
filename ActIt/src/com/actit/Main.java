@@ -3,6 +3,7 @@ package com.actit;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +24,7 @@ public class Main extends Activity {
 		  		startActivity(intent);
 			}
 		});
-		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
@@ -40,6 +41,9 @@ public class Main extends Activity {
 	        case R.id.action_settings:
 	        	Intent intent = new Intent(this, MainActivity.class);
         		startActivity(intent);
+	        case android.R.id.home:
+	            NavUtils.navigateUpFromSameTask(this);
+	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }

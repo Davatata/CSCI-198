@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.actit.MainActivity"
-            android:label="@string/app_name" 
+            android:label="Settings" 
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,15 +26,27 @@
         </activity>
         <activity
             android:name="com.actit.Main"
-            android:label="@string/MainActivity" >
+            android:label="Home" >
+            android:parentActivityName="com.actit.MainActivity" >
+            <meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="com.actit.MainActivity" />
         </activity>
         <activity
             android:name="com.actit.New_game"
-            android:label="@string/title_activity_new_game" >
+            android:label="New Game" >
+            android:parentActivityName="com.actit.Main" >
+            <meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="com.actit.New_game" />
         </activity>
         <activity
             android:name="com.actit.Facebook_friends_new_game"
-            android:label="@string/title_activity_facebook_friends_new_game" >
+            android:label="Facebook Friends" >
+            android:parentActivityName="com.actit.New_game" >
+            <meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="com.actit.Facebook_friends_new_game" />
         </activity>
         <activity
             android:name="com.actit.Play_game"

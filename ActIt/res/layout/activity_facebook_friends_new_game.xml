@@ -21,7 +21,12 @@
             android:id="@+id/editText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="center_vertical|center_horizontal"
+            android:inputType="none"
+            android:longClickable="false"
             android:text="@string/recently_active" >
 
             <requestFocus />
@@ -57,8 +62,12 @@
                 android:layout_height="match_parent"
                 android:clickable="false"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/example_name" />
+
         </TableRow>
 
         <TableRow
@@ -82,8 +91,12 @@
                 android:layout_height="match_parent"
                 android:clickable="false"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/mike" />
+
         </TableRow>
     </TableLayout>
 
@@ -100,8 +113,14 @@
             android:id="@+id/editText2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="center_vertical|center_horizontal"
+            android:inputType="none"
+            android:longClickable="false"
             android:text="@string/invite_to_play" />
+
     </LinearLayout>
 
     <TableLayout
@@ -133,8 +152,12 @@
                 android:layout_height="match_parent"
                 android:clickable="false"
                 android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/david" />
+
         </TableRow>
     </TableLayout>
 

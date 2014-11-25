@@ -1,6 +1,5 @@
 package com.fragments;
 
-
 import java.util.Arrays;
 
 import android.app.ActionBar;
