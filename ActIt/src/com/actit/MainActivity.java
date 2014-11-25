@@ -77,5 +77,10 @@ public class MainActivity extends FragmentActivity  {
 	  // Logs 'app deactivate' App Event.
 	  AppEventsLogger.deactivateApp(this);
 	}
+	
+	// When back is pressed from Settings, hide app
+	@Override public void onBackPressed(){ 
+		moveTaskToBack(true); 
+		}
 
 }
