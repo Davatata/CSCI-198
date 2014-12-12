@@ -13,6 +13,8 @@ public class Tap_to_act extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tap_to_act);
+		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
