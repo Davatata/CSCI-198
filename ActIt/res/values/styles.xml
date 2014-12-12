@@ -17,4 +17,14 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="Headers" parent="android:Widget.Holo.Light.EditText">
+        <item name="android:background">@drawable/round_corners</item>
+        <item name="android:clickable">false</item>
+        <item name="android:ems">10</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:inputType">none</item>
+        <item name="android:longClickable">false</item>
+    </style>
 </resources>

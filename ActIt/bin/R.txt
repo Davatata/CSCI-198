@@ -303,7 +303,8 @@ int string word_zebra 0x7f060037
 int string your_move 0x7f060022
 int style AppBaseTheme 0x7f070003
 int style AppTheme 0x7f070004
-int style LoginFormContainer 0x7f070005
+int style Headers 0x7f070005
+int style LoginFormContainer 0x7f070006
 int style com_facebook_loginview_default_style 0x7f070000
 int style com_facebook_loginview_silver_style 0x7f070001
 int style tooltip_bubble_text 0x7f070002

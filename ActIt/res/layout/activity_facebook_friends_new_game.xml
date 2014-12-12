@@ -13,12 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_alignStart="@+id/linearLayout2"
         android:layout_alignParentTop="true"
         android:layout_marginTop="55dp"
         android:orientation="vertical" >
 
         <EditText
             android:id="@+id/editText1"
+            style="@style/Headers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="false"
@@ -67,7 +69,6 @@
                 android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/example_name" />
-
         </TableRow>
 
         <TableRow
@@ -96,7 +97,6 @@
                 android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/mike" />
-
         </TableRow>
     </TableLayout>
 
@@ -105,12 +105,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tableLayout1"
+        android:layout_alignStart="@+id/tableLayout1"
         android:layout_below="@+id/tableLayout1"
         android:layout_marginTop="66dp"
         android:orientation="vertical" >
 
         <EditText
             android:id="@+id/editText2"
+            style="@style/Headers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="false"
@@ -157,7 +159,6 @@
                 android:inputType="none"
                 android:longClickable="false"
                 android:text="@string/david" />
-
         </TableRow>
     </TableLayout>
 
