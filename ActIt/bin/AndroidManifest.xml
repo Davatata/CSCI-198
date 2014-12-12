@@ -27,7 +27,6 @@
         <activity
             android:name="com.actit.Main"
             android:label="Home" >
-            android:parentActivityName="com.actit.MainActivity" >
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="com.actit.MainActivity" />
@@ -35,7 +34,6 @@
         <activity
             android:name="com.actit.New_game"
             android:label="New Game" >
-            android:parentActivityName="com.actit.Main" >
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="com.actit.New_game" />
@@ -43,7 +41,6 @@
         <activity
             android:name="com.actit.Facebook_friends_new_game"
             android:label="Facebook Friends" >
-            android:parentActivityName="com.actit.New_game" >
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="com.actit.Facebook_friends_new_game" />
