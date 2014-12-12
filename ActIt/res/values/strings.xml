@@ -34,7 +34,7 @@
     <string name="animals">Animals</string>
     <string name="books">Books</string>
     <string name="title_activity_tap_to_act">Tap_to_act</string>
-    <string name="time">Time</string>
+    <string name="time"> Time:</string>
     <string name="ready">Ready!</string>
     <string name="title_activity_tap_to_guess">Tap_to_guess</string>
     <string name="title_activity_give_up">Give_up</string>

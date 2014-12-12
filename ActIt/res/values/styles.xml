@@ -27,4 +27,5 @@
         <item name="android:inputType">none</item>
         <item name="android:longClickable">false</item>
     </style>
+
 </resources>
