@@ -8,7 +8,13 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
     <uses-permission android:name="android.permission.INTERNET"/>
-
+	<uses-feature    android:name="android.hardware.camera"
+	    			 android:required="true"/>
+	<uses-feature    android:name="android.hardware.camera.front" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+	<uses-feature    android:name="android.hardware.camera.autofocus" />
+	
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -26,43 +32,50 @@
         </activity>
         <activity
             android:name="com.actit.Main"
-            android:label="Home" >
+            android:label="Home" 
+            android:screenOrientation="portrait">
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="com.actit.MainActivity" />
         </activity>
         <activity
             android:name="com.actit.New_game"
-            android:label="New Game" >
+            android:label="New Game" 
+            android:screenOrientation="portrait">
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="com.actit.New_game" />
         </activity>
         <activity
             android:name="com.actit.Facebook_friends_new_game"
-            android:label="Facebook Friends" >
+            android:label="Facebook Friends" 
+            android:screenOrientation="portrait">
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="com.actit.Facebook_friends_new_game" />
         </activity>
         <activity
             android:name="com.actit.Play_game"
-            android:label="@string/title_activity_play_game" >
+            android:label="@string/title_activity_play_game" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.actit.Tap_to_act"
-            android:label="@string/title_activity_tap_to_act" >
+            android:label="@string/title_activity_tap_to_act" 
+            android:screenOrientation="portrait">
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
             	android:value="com.actit.Tap_to_act" />
         </activity>
         <activity
             android:name="com.actit.Tap_to_guess"
-            android:label="@string/title_activity_tap_to_guess" >
+            android:label="@string/title_activity_tap_to_guess" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.actit.Give_up"
-            android:label="@string/title_activity_give_up" >
+            android:label="@string/title_activity_give_up" 
+            android:screenOrientation="portrait">
         </activity>
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity android:name="com.facebook.LoginActivity"></activity>
