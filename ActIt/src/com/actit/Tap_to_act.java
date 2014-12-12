@@ -18,7 +18,7 @@ public class Tap_to_act extends Activity {
 	private Button start_new_game;
 	private EditText mycounter;
 	private CountDownTimer cdTimer;
-	private long total = 13000;
+	private long total = 60000;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class Tap_to_act extends Activity {
 					cdTimer = new CountDownTimer(total, 1000) {
 
 					     public void onTick(long millisUntilFinished) {
-					    	 if(total<=10){
+					    	 if(millisUntilFinished/1000 <=10){
 					    		 total = millisUntilFinished;
 					    		 mycounter.setBackgroundColor(Color.RED);
 					    		 mycounter.setText(" 00:0" + total / 1000);
