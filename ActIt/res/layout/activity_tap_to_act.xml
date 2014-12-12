@@ -26,34 +26,69 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp" >
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_alignParentBottom="true" >
 
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:ems="10"
-            android:text="@string/time" >
-
-            <requestFocus />
-        </EditText>
-
-        <Chronometer
-            android:id="@+id/chronometer1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="Chronometer" />
+            android:orientation="vertical" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0" >
+
+                <Button
+                    android:id="@+id/create_game"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/ready" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0" >
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="76dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/text_box"
+                    android:clickable="false"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none"
+                    android:longClickable="false"
+                    android:text="@string/time" />
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="107dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/text_box"
+                    android:clickable="false"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="number"
+                    android:longClickable="false"
+                    android:text=" 00:60" />
+            </TableRow>
+        </LinearLayout>
 
         <Button
-            android:id="@+id/create_game"
+            android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="@string/ready" />
+            android:text="Done!" />
 
     </LinearLayout>
 
