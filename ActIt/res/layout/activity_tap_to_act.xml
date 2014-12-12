@@ -8,7 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Tap_to_act" >
 
-
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"

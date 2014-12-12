@@ -52,6 +52,9 @@
         <activity
             android:name="com.actit.Tap_to_act"
             android:label="@string/title_activity_tap_to_act" >
+            <meta-data
+            	android:name="android.support.PARENT_ACTIVITY"
+            	android:value="com.actit.Tap_to_act" />
         </activity>
         <activity
             android:name="com.actit.Tap_to_guess"
