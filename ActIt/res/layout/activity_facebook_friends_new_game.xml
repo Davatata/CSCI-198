@@ -54,8 +54,8 @@
                 android:id="@+id/ImageView02"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clickable="false"
-                android:longClickable="false"
+                android:clickable="true"
+                android:longClickable="true"
                 android:src="@drawable/act_it" />
 
             <EditText
