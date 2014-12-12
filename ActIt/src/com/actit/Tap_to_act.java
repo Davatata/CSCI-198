@@ -5,6 +5,7 @@ import android.os.CountDownTimer;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,30 +18,32 @@ public class Tap_to_act extends Activity {
 	private Button start_new_game;
 	private EditText mycounter;
 	private CountDownTimer cdTimer;
-	private long total = 60000;
+	private long total = 13000;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tap_to_act);
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
 		
 		start_new_game = (Button) findViewById(R.id.create_game);
 		start_new_game.setOnClickListener(new OnClickListener() {
 			public void onClick(View view){
-				ActionBar actionBar = getActionBar();
-				actionBar.hide();
+				
 				if(start_new_game.getText().equals("Ready!") || start_new_game.getText().equals("Continue")){
 					start_new_game.setText("Pause");
 					cdTimer = new CountDownTimer(total, 1000) {
 
 					     public void onTick(long millisUntilFinished) {
-					    	 if(millisUntilFinished<10){
+					    	 if(total<=10){
 					    		 total = millisUntilFinished;
-					    		 mycounter.setText(" 00:0" + millisUntilFinished / 1000);
+					    		 mycounter.setBackgroundColor(Color.RED);
+					    		 mycounter.setText(" 00:0" + total / 1000);
 					    	 }
 					    	 else{
 					    		 total = millisUntilFinished;
-					    		 mycounter.setText(" 00:" + millisUntilFinished / 1000);
+					    		 mycounter.setText(" 00:" + total / 1000);
 					    	 }
 					     }
 
@@ -92,6 +95,7 @@ public class Tap_to_act extends Activity {
 	@Override
 	protected void onPause() {
 	  super.onPause();
+	  start_new_game.setText("Continue");
 	  cdTimer.cancel();
 	}
 

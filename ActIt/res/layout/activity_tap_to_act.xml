@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="450dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:orientation="vertical" >
@@ -30,9 +30,8 @@
         android:layout_alignParentBottom="true" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:orientation="vertical" >
 
             <TableRow
@@ -45,20 +44,29 @@
                     android:id="@+id/create_game"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="50"
                     android:text="@string/ready" />
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="Done!" />
+
             </TableRow>
 
             <TableRow
                 android:id="@+id/tableRow2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0" >
+                android:layout_width="fill_parent"
+                android:layout_height="31dp" >
 
                 <EditText
                     android:id="@+id/editText1"
                     android:layout_width="76dp"
                     android:layout_height="match_parent"
+                    android:layout_gravity="fill|center_horizontal"
+                    android:layout_weight="50"
                     android:background="@drawable/text_box"
                     android:clickable="false"
                     android:ems="10"
@@ -72,6 +80,8 @@
                     android:id="@+id/editText2"
                     android:layout_width="107dp"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal|center"
+                    android:layout_weight="50"
                     android:background="@drawable/text_box"
                     android:clickable="false"
                     android:ems="10"
@@ -80,15 +90,9 @@
                     android:inputType="number"
                     android:longClickable="false"
                     android:text=" 00:60" />
+
             </TableRow>
         </LinearLayout>
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="Done!" />
 
     </LinearLayout>
 
