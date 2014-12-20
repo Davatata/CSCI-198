@@ -2,13 +2,14 @@ package com.actit;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.provider.MediaStore;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
 import android.support.v4.app.NavUtils;
@@ -28,6 +29,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 	private EditText mycounter;
 	private CountDownTimer cdTimer;
 	private long total = 60000;
+	boolean isRunning = false;
 	
 	int defaultCameraId;
 	Camera camera;
@@ -36,7 +38,6 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
     PictureCallback rawCallback;
     ShutterCallback shutterCallback;
     PictureCallback jpegCallback;
-    private final String tag = "VideoServer";	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,41 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 		end_game = (Button) findViewById(R.id.button1);
 		end_game.setOnClickListener(new OnClickListener() {
 			public void onClick(View view){
-				finish();
+				if(isRunning == true){
+					if(60 - (total / 1000) < 15){
+						Builder alert = new AlertDialog.Builder(Tap_to_act.this);
+			            alert.setTitle("Alert");
+			            alert.setMessage("Video under 15 seconds. Send?");
+			            alert.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,int id) {
+								// Upload the short video
+								sendVideo();
+							}
+			            });
+			            alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,int id) {
+								// Don't upload
+								// Reset video
+								Intent intent = getIntent();
+								finish();
+								startActivity(intent);
+							}
+			            });
+			            alert.show();
+					}
+					else{
+						// Upload the video
+						sendVideo();
+					}
+				}
+				else{
+					// Alert the user that no video is recorded
+		            Builder alert = new AlertDialog.Builder(Tap_to_act.this);
+		            alert.setTitle("Alert");
+		            alert.setMessage("No video detected");
+		            alert.setPositiveButton("OK", null);
+		            alert.show();
+				}
 			}
 		});
 		
@@ -59,15 +94,29 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 			public void onClick(View view){
 				
 				if(start_new_game.getText().equals("Ready!") || start_new_game.getText().equals("Continue")){
-					start_camera();
 					start_new_game.setText("Pause");
+						// Hide "Ready!" button after game begins
+					start_new_game.setVisibility(View.INVISIBLE);
 					cdTimer = new CountDownTimer(total, 1000) {
 
 					     public void onTick(long millisUntilFinished) {
+					    	 isRunning = true;
 					    	 if(millisUntilFinished/1000 <=10){
 					    		 total = millisUntilFinished;
 					    		 mycounter.setBackgroundColor(Color.RED);
 					    		 mycounter.setText(" 00:0" + total / 1000);
+					    	 }
+					    	 else if(millisUntilFinished/1000 == 0){
+				    		 	Builder alert = new AlertDialog.Builder(Tap_to_act.this);
+					            alert.setTitle("Alert");
+					            alert.setMessage("Times Up! Video Sent.");
+					            alert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,int id) {
+										// Upload the video
+										finish();
+									}
+					            });
+					            alert.show();
 					    	 }
 					    	 else{
 					    		 total = millisUntilFinished;
@@ -76,12 +125,12 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 					     }
 
 					     public void onFinish() {
+					    	 isRunning = false;
 					    	 mycounter.setText(" Times Up!");
 					     }
 					  }.start();
 				}
 				else if(start_new_game.getText().equals("Pause")){
-					stop_camera();
 					start_new_game.setText("Continue");
 					cdTimer.cancel();
 				}
@@ -130,7 +179,6 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 	@Override
 	protected void onResume() {
 	  super.onResume();
-	  start_camera();
 	  //start_new_game.performClick();
 	}
 	
@@ -146,38 +194,6 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 		moveTaskToBack(true); 
 	}
 	
-	private void start_camera()
-    {
-		
-        try{
-            camera = Camera.open(CameraInfo.CAMERA_FACING_FRONT);
-        }catch(RuntimeException e){
-            Log.e(tag, "init_camera: " + e);
-            return;
-        }
-        
-        Camera.Parameters param;
-        param = camera.getParameters();
-        //modify parameter
-        param.setPreviewFrameRate(20);
-        param.setPreviewSize(1280, 720);
-        camera.setParameters(param);
-        try {
-            camera.setPreviewDisplay(surfaceHolder);
-            camera.startPreview();
-            //camera.takePicture(shutter, raw, jpeg)
-        } catch (Exception e) {
-            Log.e(tag, "init_camera: " + e);
-            return;
-        }
-        camera.setDisplayOrientation(90);
-    }
-	
-	private void stop_camera()
-    {
-        camera.stopPreview();
-        camera.release();
-    }
 	
 	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
         // TODO Auto-generated method stub
@@ -191,24 +207,17 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
         // TODO Auto-generated method stub
     }
     
-    // Swap camera but unimplemented
-    public void swapCamera(){
-    	camera.stopPreview();
-        camera.release();
-    	int numberOfCameras = camera.getNumberOfCameras();
-    	
-    	if(numberOfCameras > 1){
-    		CameraInfo cameraInfo = new CameraInfo();
-    		for (int i = 0; i < numberOfCameras; i++) {
-                Camera.getCameraInfo(i, cameraInfo);
-                if (cameraInfo.facing == CameraInfo.CAMERA_FACING_BACK) {
-                    start_camera();
-                }
-                else if(cameraInfo.facing == CameraInfo.CAMERA_FACING_FRONT)
-                	start_camera();
-            }
-    	}
-    	
+    public void sendVideo(){
+    	Builder alert = new AlertDialog.Builder(Tap_to_act.this);
+        alert.setTitle("Alert");
+        alert.setMessage("Sending Video!");
+        alert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int id) {
+				// Upload the video
+				finish();
+			}
+        });
+        alert.show();
     }
     
 }

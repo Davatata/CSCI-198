@@ -81,6 +81,6 @@ public class MainActivity extends FragmentActivity  {
 	// When back is pressed from Settings, hide app
 	@Override public void onBackPressed(){ 
 		moveTaskToBack(true); 
-		}
+	}
 
 }
