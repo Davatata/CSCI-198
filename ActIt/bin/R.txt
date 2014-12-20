@@ -234,6 +234,7 @@ int menu play_game 0x7f080005
 int menu tap_to_act 0x7f080006
 int menu tap_to_guess 0x7f080007
 int string MainActivity 0x7f060044
+int string act_a_word 0x7f060046
 int string act_it_description 0x7f06001f
 int string act_one 0x7f060031
 int string action_settings 0x7f06001d
@@ -276,6 +277,7 @@ int string easy 0x7f060033
 int string example_name 0x7f060021
 int string facebook_app_id 0x7f060043
 int string facebook_friends 0x7f060027
+int string guess_a_word 0x7f060047
 int string hard 0x7f060035
 int string hello_world 0x7f06001e
 int string invite_to_play 0x7f06002c

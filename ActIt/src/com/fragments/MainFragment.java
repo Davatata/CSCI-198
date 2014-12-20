@@ -3,8 +3,6 @@ package com.fragments;
 import java.util.Arrays;
 
 import android.app.ActionBar;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,7 +16,7 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LoginButton;
-import com.actit.Main;
+import com.actit.New_game;
 import com.actit.R;
 
 public class MainFragment extends Fragment {
@@ -39,7 +37,7 @@ public class MainFragment extends Fragment {
 			@Override
 			public void onClick(View view){
 				//Toast.makeText(getActivity(), "Continue", Toast.LENGTH_SHORT).show(); //dark writing on bottom of screen when clicked
-				Intent intent = new Intent(getActivity(), Main.class);
+				Intent intent = new Intent(getActivity(), New_game.class);
 		  		startActivity(intent);
 			}
 		});

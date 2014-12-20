@@ -43,5 +43,7 @@
     <string name="facebook_app_id">608868299241580</string>
     <string name="MainActivity">MainActivity</string>
     <string name="continue1">Continue</string>
+    <string name="act_a_word">Act a word</string>
+    <string name="guess_a_word">Guess a word</string>
 
 </resources>

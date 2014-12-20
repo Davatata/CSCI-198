@@ -50,7 +50,7 @@
             android:id="@+id/create_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/facebook_friends" />
+            android:text="@string/act_a_word" />
 
     </LinearLayout>
 
@@ -67,7 +67,7 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/random_opponent" />
+            android:text="@string/guess_a_word" />
 
     </LinearLayout>
 

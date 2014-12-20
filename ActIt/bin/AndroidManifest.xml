@@ -44,7 +44,7 @@
             android:screenOrientation="portrait">
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
-            	android:value="com.actit.New_game" />
+            	android:value="com.actit.MainActivity" />
         </activity>
         <activity
             android:name="com.actit.Facebook_friends_new_game"
@@ -65,7 +65,7 @@
             android:screenOrientation="portrait">
             <meta-data
             	android:name="android.support.PARENT_ACTIVITY"
-            	android:value="com.actit.Tap_to_act" />
+            	android:value="com.actit.New_game" />
         </activity>
         <activity
             android:name="com.actit.Tap_to_guess"

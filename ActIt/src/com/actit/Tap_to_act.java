@@ -51,7 +51,9 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 		end_game = (Button) findViewById(R.id.button1);
 		end_game.setOnClickListener(new OnClickListener() {
 			public void onClick(View view){
+				// Check if user is recording
 				if(isRunning == true){
+					// Check if video is under 15 seconds
 					if(60 - (total / 1000) < 15){
 						Builder alert = new AlertDialog.Builder(Tap_to_act.this);
 			            alert.setTitle("Alert");
@@ -189,9 +191,11 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 	  cdTimer.cancel();
 	}
 
-	// When back is pressed from Settings, hide app
+	// When back is pressed, quit game or restart activity
 	@Override public void onBackPressed(){ 
-		moveTaskToBack(true); 
+		
+        super.onBackPressed();
+        quitGame();
 	}
 	
 	
@@ -215,6 +219,27 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 			public void onClick(DialogInterface dialog,int id) {
 				// Upload the video
 				finish();
+			}
+        });
+        alert.show();
+    }
+    
+    public void quitGame(){
+    	Builder alert = new AlertDialog.Builder(Tap_to_act.this);
+        alert.setTitle("Alert");
+        alert.setMessage("Quit game?");
+        alert.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int id) {
+				// Upload the video
+				finish();
+			}
+        });
+        alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int id) {
+				// Reset activity
+				Intent intent = getIntent();
+				finish();
+				startActivity(intent);
 			}
         });
         alert.show();
