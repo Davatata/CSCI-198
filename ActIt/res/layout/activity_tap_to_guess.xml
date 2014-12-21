@@ -11,7 +11,7 @@
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:orientation="vertical" >
@@ -19,41 +19,86 @@
         <VideoView
             android:id="@+id/videoView1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1.42" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearLayout1"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_marginTop="41dp" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:ems="10"
-            android:text="@string/time" >
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0" >
 
-            <requestFocus />
-        </EditText>
+                    <Button
+                        android:id="@+id/create_game"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:text="@string/ready" />
 
-        <Chronometer
-            android:id="@+id/chronometer1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="Chronometer" />
+                    <ImageButton
+                        android:id="@+id/imageButton1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_action_microphone" />
 
-        <Button
-            android:id="@+id/create_game"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="@string/ready" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="31dp"
+                    android:layout_weight="0" >
+
+                    <EditText
+                        android:id="@+id/editText1"
+                        android:layout_width="76dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="85"
+                        android:background="@drawable/text_box"
+                        android:clickable="false"
+                        android:ellipsize="start"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:inputType="none"
+                        android:longClickable="false"
+                        android:text="@string/time" >
+
+                        <requestFocus />
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/editText2"
+                        android:layout_width="107dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="15"
+                        android:background="@drawable/text_box"
+                        android:clickable="false"
+                        android:ellipsize="start"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:longClickable="false"
+                        android:text=" 00:60" />
+                </TableRow>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

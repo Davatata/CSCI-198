@@ -11,8 +11,7 @@
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:orientation="vertical" >
 
@@ -20,28 +19,30 @@
             android:id="@+id/editText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="center_vertical|center_horizontal"
-            android:text="@string/nice_try" >
+            android:inputType="none"
+            android:longClickable="false"
+            android:text="@string/the_word_was" >
 
             <requestFocus />
         </EditText>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:orientation="vertical" >
-
         <EditText
             android:id="@+id/editText2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center_vertical|center_horizontal"
+            android:inputType="none"
+            android:longClickable="false"
+            android:text="@string/word" />
 
     </LinearLayout>
 

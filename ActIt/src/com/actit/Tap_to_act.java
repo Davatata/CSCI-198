@@ -28,7 +28,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 	private Button end_game;
 	private EditText mycounter;
 	private CountDownTimer cdTimer;
-	private long total = 60000;
+	private long total = 50000;
 	boolean isRunning = false;
 	
 	int defaultCameraId;
@@ -38,6 +38,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
     PictureCallback rawCallback;
     ShutterCallback shutterCallback;
     PictureCallback jpegCallback;
+    
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -103,22 +104,10 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 
 					     public void onTick(long millisUntilFinished) {
 					    	 isRunning = true;
-					    	 if(millisUntilFinished/1000 <=10){
+					    	 if(millisUntilFinished/1000 <10){
 					    		 total = millisUntilFinished;
 					    		 mycounter.setBackgroundColor(Color.RED);
 					    		 mycounter.setText(" 00:0" + total / 1000);
-					    	 }
-					    	 else if(millisUntilFinished/1000 == 0){
-				    		 	Builder alert = new AlertDialog.Builder(Tap_to_act.this);
-					            alert.setTitle("Alert");
-					            alert.setMessage("Times Up! Video Sent.");
-					            alert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,int id) {
-										// Upload the video
-										finish();
-									}
-					            });
-					            alert.show();
 					    	 }
 					    	 else{
 					    		 total = millisUntilFinished;
@@ -129,6 +118,16 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 					     public void onFinish() {
 					    	 isRunning = false;
 					    	 mycounter.setText(" Times Up!");
+					    	 Builder alert2 = new AlertDialog.Builder(Tap_to_act.this);
+					            alert2.setTitle("Alert");
+					            alert2.setMessage("Times Up! Video Sent.");
+					            alert2.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,int id) {
+										// Upload the video
+										finish();
+									}
+					            });
+					            alert2.show();
 					     }
 					  }.start();
 				}
@@ -212,29 +211,29 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
     }
     
     public void sendVideo(){
-    	Builder alert = new AlertDialog.Builder(Tap_to_act.this);
-        alert.setTitle("Alert");
-        alert.setMessage("Sending Video!");
-        alert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+    	Builder alert3 = new AlertDialog.Builder(Tap_to_act.this);
+        alert3.setTitle("Alert");
+        alert3.setMessage("Sending Video!");
+        alert3.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int id) {
 				// Upload the video
 				finish();
 			}
         });
-        alert.show();
+        alert3.show();
     }
     
     public void quitGame(){
-    	Builder alert = new AlertDialog.Builder(Tap_to_act.this);
-        alert.setTitle("Alert");
-        alert.setMessage("Quit game?");
-        alert.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+    	Builder alert4 = new AlertDialog.Builder(Tap_to_act.this);
+        alert4.setTitle("Alert");
+        alert4.setMessage("Quit game?");
+        alert4.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int id) {
 				// Upload the video
 				finish();
 			}
         });
-        alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+        alert4.setNegativeButton("No",new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int id) {
 				// Reset activity
 				Intent intent = getIntent();
@@ -242,7 +241,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 				startActivity(intent);
 			}
         });
-        alert.show();
+        alert4.show();
     }
     
 }

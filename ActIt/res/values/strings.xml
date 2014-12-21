@@ -45,5 +45,7 @@
     <string name="continue1">Continue</string>
     <string name="act_a_word">Act a word</string>
     <string name="guess_a_word">Guess a word</string>
+    <string name="the_word_was">The word was </string>
+    <string name="word">WORD</string>
 
 </resources>

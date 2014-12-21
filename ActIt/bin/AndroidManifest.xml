@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="11"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="21" />
     <uses-permission android:name="android.permission.INTERNET"/>
 	<uses-feature    android:name="android.hardware.camera"
 	    			 android:required="true"/>
@@ -14,6 +14,7 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
 	<uses-feature    android:name="android.hardware.camera.autofocus" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
 	
     <application
         android:allowBackup="true"
