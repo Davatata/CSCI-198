@@ -184,6 +184,7 @@ public class Tap_to_guess extends Activity {
 				    	 mycounter.setText(" Times Up!");
 				    	 Builder alert = new AlertDialog.Builder(Tap_to_guess.this);
 				            alert.setTitle("Alert");
+				            alert.setCancelable(false);
 				            alert.setMessage("Times Up! The word was " + currentWord);
 				            alert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,int id) {
@@ -233,7 +234,7 @@ public class Tap_to_guess extends Activity {
 	// When back is pressed, quit game or restart activity
 	@Override public void onBackPressed(){ 
 		
-        super.onBackPressed();
+        //super.onBackPressed();
         //quitGame();
 	}
 	
@@ -242,6 +243,7 @@ public class Tap_to_guess extends Activity {
     	Builder alert2 = new AlertDialog.Builder(Tap_to_guess.this);
         alert2.setTitle("The word was");
         alert2.setMessage(currentWord);
+        alert2.setCancelable(false);
         alert2.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int id) {
 				finish();
@@ -255,6 +257,7 @@ public class Tap_to_guess extends Activity {
     	Builder alert4 = new AlertDialog.Builder(Tap_to_guess.this);
         alert4.setTitle("Alert");
         alert4.setMessage("Quit game?");
+        alert4.setCancelable(false);
         alert4.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int id) {
 				// Upload the video to YouTube
@@ -276,6 +279,7 @@ public void winGame(){
     	Builder alert5 = new AlertDialog.Builder(Tap_to_guess.this);
         alert5.setTitle("You win!");
         alert5.setMessage("The word was " + currentWord);
+        alert5.setCancelable(false);
         alert5.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int id) {
 				// End the game

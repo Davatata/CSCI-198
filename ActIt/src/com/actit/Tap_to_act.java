@@ -59,6 +59,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 						Builder alert = new AlertDialog.Builder(Tap_to_act.this);
 			            alert.setTitle("Alert");
 			            alert.setMessage("Video under 15 seconds. Send?");
+			            alert.setCancelable(false);
 			            alert.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,int id) {
 								// Upload the short video
@@ -86,6 +87,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 		            Builder alert = new AlertDialog.Builder(Tap_to_act.this);
 		            alert.setTitle("Alert");
 		            alert.setMessage("No video detected");
+		            alert.setCancelable(false);
 		            alert.setPositiveButton("OK", null);
 		            alert.show();
 				}
@@ -121,6 +123,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 					    	 Builder alert2 = new AlertDialog.Builder(Tap_to_act.this);
 					            alert2.setTitle("Alert");
 					            alert2.setMessage("Times Up! Video Sent.");
+					            alert2.setCancelable(false);
 					            alert2.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,int id) {
 										// Upload the video
@@ -193,8 +196,8 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 	// When back is pressed, quit game or restart activity
 	@Override public void onBackPressed(){ 
 		
-        super.onBackPressed();
-        quitGame();
+        //super.onBackPressed();
+        
 	}
 	
 	
@@ -214,6 +217,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
     	Builder alert3 = new AlertDialog.Builder(Tap_to_act.this);
         alert3.setTitle("Alert");
         alert3.setMessage("Sending Video!");
+        alert3.setCancelable(false);
         alert3.setPositiveButton("OK",new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int id) {
 				// Upload the video
@@ -227,6 +231,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
     	Builder alert4 = new AlertDialog.Builder(Tap_to_act.this);
         alert4.setTitle("Alert");
         alert4.setMessage("Quit game?");
+        alert4.setCancelable(false);
         alert4.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog,int id) {
 				// Upload the video
