@@ -21,6 +21,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+
+import android.widget.Toast;
+import android.widget.VideoView;
+
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
+import com.google.android.youtube.player.YouTubePlayer.PlaybackEventListener;
+import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener;
+import com.google.android.youtube.player.YouTubePlayer.Provider;
+import com.google.android.youtube.player.YouTubePlayerView;
+
+
 public class Tap_to_guess extends Activity {
 
 	private Button start_new_game;
@@ -37,6 +51,8 @@ public class Tap_to_guess extends Activity {
 	private SpeechRecognizer mSpeechRecognizer;
 	private Intent mSpeechRecognizerIntent; 
 	private boolean mIslistening; 
+	private VideoView videoview;
+	
 	
 	protected class SpeechRecognitionListener implements RecognitionListener
 	{
@@ -55,7 +71,7 @@ public class Tap_to_guess extends Activity {
 
 	    @Override
 	    public void onEndOfSpeech()
-	    {
+	    {	button_to_normal();
 	        //Log.d(TAG, "onEndOfSpeech");
 	     }
 
@@ -126,7 +142,7 @@ public class Tap_to_guess extends Activity {
             @Override
             public void onClick(View v) {
             	if (!mIslistening)
-            	{
+            	{	recordButton.setImageResource(R.drawable.microphone_red);
             		SpeechRecognitionListener listener = new SpeechRecognitionListener(); 
             		mSpeechRecognizer.setRecognitionListener(listener);
             	    mSpeechRecognizer.startListening(mSpeechRecognizerIntent);
@@ -273,8 +289,12 @@ public class Tap_to_guess extends Activity {
         
         alert4.show();
     }
+	
+	public void button_to_normal(){
+		recordButton.setImageResource(R.drawable.ic_action_microphone);
+	}
 
-public void winGame(){
+	public void winGame(){
 		winner = true;
     	Builder alert5 = new AlertDialog.Builder(Tap_to_guess.this);
         alert5.setTitle("You win!");
