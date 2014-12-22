@@ -19,193 +19,45 @@
 
         <EditText
             android:id="@+id/editText1"
+            style="@style/Headers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:clickable="false"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="center_vertical|center_horizontal"
-            android:text="@string/act_one" />
-    </LinearLayout>
+            android:longClickable="false"
+            android:padding="10dp"
+            android:text="@string/pick_a_word" />
 
-    <LinearLayout
-        android:id="@+id/LinearLayout01"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp" >
-
-        <EditText
-            android:id="@+id/EditText01"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="@string/easy" />
-
-        <EditText
-            android:id="@+id/EditText02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_margin="5dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:text="@string/word_dog" />
 
-        <ImageView
-            android:id="@+id/ImageView01"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_weight="0.40"
-            android:src="@drawable/one_coin" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout02"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/LinearLayout01"
-        android:layout_below="@+id/LinearLayout01" >
-
-        <EditText
-            android:id="@+id/EditText03"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="@string/medium" >
-
-            <requestFocus />
-        </EditText>
-
-        <EditText
-            android:id="@+id/EditText04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/word_zebra" />
-
-        <ImageView
-            android:id="@+id/ImageView02"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_weight="0.40"
-            android:src="@drawable/two_coins" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/LinearLayout02"
-        android:layout_below="@+id/LinearLayout02" >
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="@string/hard" />
-
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_margin="5dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:text="@string/word_hippo" />
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_weight="0.40"
-            android:src="@drawable/three_coins" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout03"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_marginTop="66dp"
-        android:orientation="vertical" >
-
-        <EditText
-            android:id="@+id/EditText05"
+        <Button
+            android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/categories" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/linearLayout3"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical" >
-
-        <EditText
-            android:id="@+id/EditText06"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/animals" />
-
-        <ImageView
-            android:id="@+id/ImageView03"
-            android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:src="@drawable/two_coins" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/LinearLayout03"
-        android:layout_alignTop="@+id/LinearLayout04"
-        android:orientation="vertical" >
-
-        <EditText
-            android:id="@+id/EditText07"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/books" />
-
-        <ImageView
-            android:id="@+id/ImageView04"
-            android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:src="@drawable/three_coins" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/LinearLayout03"
-        android:layout_below="@+id/LinearLayout03"
-        android:layout_marginTop="45dp"
-        android:orientation="vertical" >
-
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/movies" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="59dp"
-            android:src="@drawable/one_coin" />
+            android:layout_margin="5dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="@string/word_zebra" />
     </LinearLayout>
 
 </RelativeLayout>

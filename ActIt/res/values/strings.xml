@@ -47,5 +47,6 @@
     <string name="guess_a_word">Guess a word</string>
     <string name="the_word_was">The word was </string>
     <string name="word">WORD</string>
+    <string name="pick_a_word">Pick a word to Act</string>
 
 </resources>

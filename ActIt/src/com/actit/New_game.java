@@ -21,7 +21,7 @@ public class New_game extends Activity {
 		button_new_game = (Button) findViewById(R.id.create_game);
 		button_new_game.setOnClickListener(new OnClickListener() {
 			public void onClick(View view){
-				Intent intent = new Intent(New_game.this, Tap_to_act.class);
+				Intent intent = new Intent(New_game.this, Play_game.class);
 		  		startActivity(intent);
 			}
 		});
