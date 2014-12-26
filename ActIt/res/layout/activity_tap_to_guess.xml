@@ -14,14 +14,21 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:longClickable="false"
         android:orientation="vertical" >
 
         <VideoView
             android:id="@+id/videoView1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.42" />
-        
+            android:layout_weight="1.42"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:longClickable="false" />
 
         <LinearLayout
             android:layout_width="match_parent"

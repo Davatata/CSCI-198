@@ -2,8 +2,10 @@ package com.actit;
 
 import java.util.ArrayList;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.StrictMode;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,20 +24,34 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 
-import android.widget.Toast;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
-import com.google.android.youtube.player.YouTubeBaseActivity;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
-import com.google.android.youtube.player.YouTubePlayer.PlaybackEventListener;
-import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener;
-import com.google.android.youtube.player.YouTubePlayer.Provider;
-import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestInitializer;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+//import com.google.api.services.samples.youtube.cmdline.Auth;
+import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.YouTube.Search;
+import com.google.api.services.youtube.model.ResourceId;
+import com.google.api.services.youtube.model.SearchListResponse;
+import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.Thumbnail;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
 
 
-public class Tap_to_guess extends Activity {
+public class Tap_to_guess extends Activity  {
 
 	private Button start_new_game;
 	private long total = 15000;
@@ -51,7 +67,14 @@ public class Tap_to_guess extends Activity {
 	private SpeechRecognizer mSpeechRecognizer;
 	private Intent mSpeechRecognizerIntent; 
 	private boolean mIslistening; 
-	private VideoView videoview;
+	private static VideoView videoView;
+	
+	private static final String PROPERTIES_FILENAME = "youtube.properties";
+
+    private static final long NUMBER_OF_VIDEOS_RETURNED = 5;
+
+    private static YouTube youtube;
+
 	
 	
 	protected class SpeechRecognitionListener implements RecognitionListener
@@ -132,9 +155,19 @@ public class Tap_to_guess extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.hide();
 		
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 		
+		videoView =(VideoView)findViewById(R.id.videoView1);
+	    //MediaController mediaController= new MediaController(this);
+	   // mediaController.setAnchorView(videoView);
+	    String path = "http://www.youtube.com/watch?v=VXPJEj2m6sw";
+        Uri uri= Uri.parse(path);
+	    videoView.setMediaController(null);
+	    videoView.setVideoURI(uri);
+	    //videoView.requestFocus();
 		
-		
+	    
 		recordButton = (ImageButton) findViewById(R.id.imageButton1);
 		recordButton.setVisibility(View.INVISIBLE);
 		recordButton.setOnClickListener(new View.OnClickListener() {
@@ -161,7 +194,7 @@ public class Tap_to_guess extends Activity {
 		start_new_game = (Button) findViewById(R.id.create_game);
 		start_new_game.setOnClickListener(new OnClickListener() {
 			public void onClick(View view){
-				
+				videoView.start();
 				if(start_new_game.getText().equals("Give Up")){
 					//start_new_game.setVisibility(View.INVISIBLE);
 					quitGame();
@@ -170,6 +203,7 @@ public class Tap_to_guess extends Activity {
 				else{
 					start_new_game.setText("Give Up");
 					recordButton.setVisibility(View.VISIBLE);
+					startStreaming();
 					cdTimer = new CountDownTimer(total, 1000) {
 					// Start streaming video from YouTube
 						
@@ -309,4 +343,91 @@ public class Tap_to_guess extends Activity {
         
         alert5.show();
     }
+	
+	public void startStreaming(){
+		try {
+            // This object is used to make YouTube Data API requests. The last
+            // argument is required, but since we don't need anything
+            // initialized when the HttpRequest is initialized, we override
+            // the interface and provide a no-op function.
+            youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), new HttpRequestInitializer() {
+                public void initialize(HttpRequest request) throws IOException {
+                }
+            }).setApplicationName((String.valueOf(R.string.app_name))).build();
+
+            // Prompt the user to enter a query term.
+            String queryTerm = "act";
+
+            // Define the API request for retrieving search results.
+            YouTube.Search.List search = youtube.search().list("id,snippet");
+
+            // Set your developer key from the Google Developers Console for
+            // non-authenticated requests. See:
+            // https://console.developers.google.com/
+            String apiKey = "AIzaSyBoywB6T_-cE07FoyC2PMKNw7QvwK0vfuk";
+            search.setKey(apiKey);
+            search.setQ(queryTerm);
+            search.setChannelId("UC4JUIHjQX0JnwV9BVbHw_iQ");
+
+            // Restrict the search results to only include videos. See:
+            // https://developers.google.com/youtube/v3/docs/search/list#type
+            search.setType("video");
+
+            // To increase efficiency, only retrieve the fields that the
+            // application uses.
+            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+            search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
+
+            // Call the API and print results.
+            SearchListResponse searchResponse = search.execute();
+            List<SearchResult> searchResultList = searchResponse.getItems();
+            int listSize = searchResultList.size();
+            
+            if (searchResultList != null) {
+                prettyPrint(searchResultList.iterator(), queryTerm);
+            }
+        } catch (GoogleJsonResponseException e) {
+            System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
+                    + e.getDetails().getMessage());
+        } catch (IOException e) {
+            System.err.println("There was an IO error: " + e.getCause() + " : " + e.getMessage());
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
+	
+	private static void prettyPrint(Iterator<SearchResult> iteratorSearchResults, String query) {
+
+        System.out.println("\n=============================================================");
+        System.out.println(
+                "   First " + NUMBER_OF_VIDEOS_RETURNED + " videos for search on \"" + query + "\".");
+        System.out.println("=============================================================\n");
+
+        if (!iteratorSearchResults.hasNext()) {
+            System.out.println(" There aren't any results for your query.");
+        }
+
+        
+        while (iteratorSearchResults.hasNext()) {
+
+            SearchResult singleVideo = iteratorSearchResults.next();
+            ResourceId rId = singleVideo.getId();
+            
+
+            // Confirm that the result represents a video. Otherwise, the
+            // item will not contain a video ID.
+            if (rId.getKind().equals("youtube#video")) {
+                Thumbnail thumbnail = singleVideo.getSnippet().getThumbnails().getDefault();
+                
+                
+                
+                		
+                System.out.println(" Video Id" + rId.getVideoId());
+                System.out.println(" Title: " + singleVideo.getSnippet().getTitle());
+                System.out.println(" Thumbnail: " + thumbnail.getUrl());
+                System.out.println("\n-------------------------------------------------------------\n");
+            }
+        }
+    }
+	
 }

@@ -49,6 +49,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 	int defaultCameraId;
 	private String word = "default";
 	
+	
 	File video;
 	boolean previewing = false;
 	Camera camera;
@@ -138,7 +139,7 @@ public class Tap_to_act extends Activity implements SurfaceHolder.Callback{
 				if(start_new_game.getText().equals("Ready!") || start_new_game.getText().equals("Continue")){
 					start_new_game.setText("Pause");
 						// Hide "Ready!" button after game begins
-					start_new_game.setVisibility(View.INVISIBLE);
+					start_new_game.setText(word);
 					cdTimer = new CountDownTimer(total, 1000) {
 
 					     public void onTick(long millisUntilFinished) {
